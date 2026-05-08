@@ -62,4 +62,5 @@ plt.grid(True)
 # save plot
 plt.savefig("ohio_unemployment.png")
 
+# display plot
 plt.show()
