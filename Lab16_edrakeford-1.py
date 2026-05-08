@@ -9,4 +9,42 @@ and parses the data to create a time-series line plot using matplotlib.
 Starter Code: None
 
 Date: May 8, 2026
-"""
+""" 
+
+import csv
+from datetime import datetime
+import matplotlib.pyplot as plt
+
+# data lists
+dates = []
+unemp_rates = []
+
+# reading CSV file
+try:
+    with open("OHUR.csv", "r", newline="") as csv_file:
+        reader = csv.reader(csv_file)
+
+        header = next(reader)
+
+        # enumerate() for header
+        for index, column_name in enumerate(header):
+            print(f"Column {index}: {column_name}")
+
+        # remaining rows
+        for row in reader:
+            try:
+               
+                # convertinb date string and unemployement rate
+                date = datetime.strptime(row[0], "%Y-%m-%d")
+                rate = float(row[1])
+
+                # store data in lists
+                dates.append(date)
+                unemp_rates.append(rate)
+
+            except ValueError:
+                print(f"Skipping invalid row: {row}")
+
+except FileNotFoundError:
+    print("Error: OHUR.csv file not found.")
+    exit()
