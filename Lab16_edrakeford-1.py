@@ -48,3 +48,18 @@ try:
 except FileNotFoundError:
     print("Error: OHUR.csv file not found.")
     exit()
+
+# creating the plot
+plt.plot(dates, unemp_rates, color="blue")
+
+# title and labels
+plt.title("Ohio Unemployment (by Month): 1976 - 2022")
+plt.xlabel("Date")
+plt.ylabel("Unemp Rate")
+
+plt.grid(True)
+
+# save plot
+plt.savefig("ohio_unemployment.png")
+
+plt.show()
